@@ -7,14 +7,14 @@ using ToDoAPI.Validators.ToDoValidator;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddControllers();
-                //.ConfigureApiBehaviorOptions(options =>
-                //{
-                //    options.InvalidModelStateResponseFactory = context =>
-                //    {
-                //        return HttpErrors.BadRequest(data: "Invalid data model");
-                //    };
-                //});
+builder.Services.AddControllers()
+        .ConfigureApiBehaviorOptions(options =>
+        {
+            options.InvalidModelStateResponseFactory = context =>
+            {
+                return HttpErrors.BadRequest(data: "Invalid data model");
+            };
+        });
 
 
 builder.Services.AddDbContext<ToDoDB>();

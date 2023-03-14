@@ -31,7 +31,7 @@ namespace ToDoAPI
             return new NotFoundObjectResult(GetErrorAPIResponse(HttpStatusCode.NotFound, message, data));
         }
 
-        private static APIResponse GetErrorAPIResponse(HttpStatusCode statusCode, string? message, object? data)
+        public static APIResponse GetErrorAPIResponse(HttpStatusCode statusCode, string? message, object? data)
         {
             APIResponse response = new()
             {
