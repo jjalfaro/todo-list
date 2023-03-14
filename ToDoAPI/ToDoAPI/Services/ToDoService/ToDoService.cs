@@ -1,37 +1,49 @@
-﻿using ToDoAPI.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ToDoAPI.Data;
 using ToDoAPI.Data.Models;
 
 namespace ToDoAPI.Services.ToDoService
 {
     public class ToDoService : IToDoService
     {
-        private readonly ToDoListDB _db;
+        private readonly ToDoDB _db;
 
-        public ToDoService(ToDoListDB db)
+        public ToDoService(ToDoDB db)
         {
             _db = db;
         }
 
-        public Task DeleteToDo(ToDo entity)
+        public async Task DeleteToDo(ToDo entity)
         {
-            throw new NotImplementedException();
+            this._db.ToDo.Remove(entity);
+            await this._db.SaveChangesAsync();
         }
 
-        public Task InsertToDo(ToDo entity)
+        public async Task<ToDo?> FindToDo(int id)
         {
-            throw new NotImplementedException();
+            return await this._db
+                .ToDo
+                .Where(td => td.Id == id)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task InsertToDo(ToDo entity)
+        {
+            this._db.ToDo.Add(entity);
+            await this._db.SaveChangesAsync();
         }
 
         public IQueryable<ToDo> ListToDos(bool loadDone = false)
         {
             return this._db
-                .ToDos
+                .ToDo
                 .Where(td => td.Done == loadDone);
         }
 
-        public Task UpdateToDo(ToDo entity)
+        public async Task UpdateToDo(ToDo entity)
         {
-            throw new NotImplementedException();
+            this._db.ToDo.Update(entity);
+            await this._db .SaveChangesAsync();
         }
     }
 }

@@ -5,21 +5,21 @@ using ToDoAPI.Data.Models;
 
 namespace ToDoAPI.Data;
 
-public partial class ToDoListDB : DbContext
+public partial class ToDoDB : DbContext
 {
-    public ToDoListDB()
+    public ToDoDB()
     {
     }
 
-    public ToDoListDB(DbContextOptions<ToDoListDB> options)
+    public ToDoDB(DbContextOptions<ToDoDB> options)
         : base(options)
     {
     }
 
-    public virtual DbSet<ToDo> ToDos { get; set; }
+    public virtual DbSet<ToDo> ToDo { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Name=ToDoListDB");
+        => optionsBuilder.UseSqlServer("Name=ToDoDB");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
