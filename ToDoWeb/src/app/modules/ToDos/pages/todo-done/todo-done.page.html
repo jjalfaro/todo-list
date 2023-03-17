@@ -1,2 +1,22 @@
-<h1>Tasks Done</h1>
-<p>todo-done works!</p>
+<h1>Done Tasks</h1>
+<div>
+    <ul>
+        <li *ngFor="let todo of todos ; let _index = index" class="flex-container" >
+            <div class="todo-check">
+                <input type="checkbox" id="chk_{{_index}}" [checked]="todo.done" (click)="changeStatus(_index,todo)"/>
+                <label for="chk_{{_index}}"></label>
+            </div>
+            <div class="todo-description">
+                <span>{{todo.description}}</span>
+            </div>
+            <div class="todo-dueDate">
+                <span>{{todo.dueDate | date: 'medium':'UTC'}} </span>
+            </div>
+            <div class="todo-delete">
+                <button (click)="deleteTodo(_index,todo.id)">
+                    <i class="material-icons-sharp">delete</i>
+                </button>
+            </div>
+        </li>
+    </ul>
+</div>
