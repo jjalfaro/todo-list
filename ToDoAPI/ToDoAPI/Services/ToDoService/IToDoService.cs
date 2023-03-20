@@ -1,4 +1,5 @@
-﻿using ToDoAPI.Data.Models;
+﻿using System.Numerics;
+using ToDoAPI.Data.Models;
 
 namespace ToDoAPI.Services.ToDoService
 {
@@ -8,6 +9,7 @@ namespace ToDoAPI.Services.ToDoService
         Task InsertToDo(ToDo entity);
         Task UpdateToDo(ToDo entity);
         Task DeleteToDo(ToDo entity);
+        Task<ToDo?> FindToDo(int id);
 
     }
 }
