@@ -1,6 +1,6 @@
 <h1>Done Tasks</h1>
 <div>
-    <ul>
+    <ul *ngIf="todos.length > 0">
         <li *ngFor="let todo of todos ; let _index = index" class="flex-container" >
             <div class="todo-check">
                 <input type="checkbox" id="chk_{{_index}}" [checked]="todo.done" (click)="changeStatus(_index,todo)"/>
@@ -19,4 +19,9 @@
             </div>
         </li>
     </ul>
+    <div *ngIf="todos.length == 0" class="no-todos-container"> 
+        <div class="no-todos">
+            <span>No ha tareas completadas !</span> 
+        </div>
+    </div>
 </div>

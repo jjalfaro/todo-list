@@ -115,3 +115,19 @@
     opacity   : 1;
     transform : scale(1);
 }
+
+.no-todos-container{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.no-todos{
+    flex: 1;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 200px;
+    font-size: xx-large;
+    color: var(--top-bar-background);
+}

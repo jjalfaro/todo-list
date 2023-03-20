@@ -18,6 +18,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
+    "allowSyntheticDefaultImports":true,
     "lib": [
       "ES2022",
       "dom"
@@ -25,7 +26,6 @@
     "paths": {
       "@models/*": ["src/app/models/*"],
       "@services/*": ["src/app/services/*"],
-      "@utils/*": ["src/app/utils/*"]
     }
   },
   "angularCompilerOptions": {

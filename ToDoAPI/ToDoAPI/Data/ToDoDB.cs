@@ -26,9 +26,8 @@ public partial class ToDoDB : DbContext
         modelBuilder.Entity<ToDo>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_ToDos");
-            entity.Property(e => e.Description).HasMaxLength(250);
-            entity.Property(e => e.Done).HasDefaultValue(false);
 
+            entity.Property(e => e.Description).HasMaxLength(250);
         });
 
         OnModelCreatingPartial(modelBuilder);

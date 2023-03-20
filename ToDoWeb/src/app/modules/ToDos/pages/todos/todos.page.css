@@ -1,3 +1,103 @@
+form {
+    width: 100%;
+}
+
+.form-group{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 -1rem 1rem -1rem;
+}
+
+[class*="form-col"] {
+    flex: 0 1 100%;
+    padding: 0 1rem;
+}
+
+@media (min-width: 576px) {
+    form {
+        width: 50%;
+    }
+
+    .form-col-4 {
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%;
+    }
+    
+    .form-col-8 {
+      flex: 0 0 66.66667%;
+      max-width: 66.66667%;
+    }
+    
+    .offset-form-col-4 {
+      margin-left: 33.33333%;
+    }
+}
+
+[class*="form-col"] > input ,select  {
+    height: 44px;
+    border: 1px solid #d5d5d5;
+    border-radius: 4px;
+    background-color: #ffffff;
+    background-image: none;
+    color: #333333;
+    margin-bottom: 0;
+    padding: 7px 11px;
+}
+
+
+select  {
+    margin-left: 5px;
+}
+
+.time-picker > select:first-child {
+    margin-left: 0px;
+}
+
+
+[class*="form-col"] > label {
+    height: 44px;
+    min-height: 44px;
+    font-size: 2rem;
+    padding: 12px 0 14px 0;
+}
+
+.save-container{
+    text-align: right;
+}
+
+
+.save-container > button {
+    border: 0;
+    padding: 1rem;
+    font-size: 1.8rem;
+    border: 0.2rem;
+    background: none;
+    color: var(--main-text-color);
+    transition: backround-color 0.2s linear;
+}
+
+.save-container > button > i {
+    vertical-align: middle;
+}
+
+.save-container > button:hover {
+    background: var(--main-hover-background);
+ }
+
+  
+input {
+    display: block;
+    width: 100%;
+}
+  
+label {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+
+
 .flex-container {
     display: flex;
 }
@@ -123,3 +223,26 @@
     opacity   : 1;
     transform : scale(1);
 }
+
+
+input.ng-touched.ng-invalid{
+    background-color: ivory;
+    border: none;
+    outline: 2px solid red;
+}
+
+.invalid{
+    background-color: ivory;
+    border: none;
+    outline: 2px solid red;
+}
+
+select.ng-touched.ng-invalid{
+    background-color: ivory;
+    border: none;
+    outline: 2px solid red;
+}
+.error { 
+    margin-top:5px;
+    color: #C73E1D;
+ }

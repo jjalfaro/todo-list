@@ -28,7 +28,7 @@ namespace ToDoAPI.Validators.ToDoValidator
             }
 
             //DueDate
-            if(data.DueDate.Date < DateTime.Now.Date)
+            if(data.DueDate < DateTime.Now.ToUniversalTime())
             {
                 innerMessages.Add("Due Date can't be before today");
             }
