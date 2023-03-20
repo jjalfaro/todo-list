@@ -1,23 +1,81 @@
 <h1>Pending Tasks</h1>
-<div>
-    <form>
-        <ul>
-            <li> Mensajes de error</li>
-        </ul>
-        <div>
+<form #todoForm="ngForm">
+    <div class="form-group">
+        <div class="form-col-4">
             <label for="txtDescription">Descripción</label>
-            <input type="text" id="txtDescription" name="description" placeholder="E.g.: Cortar el zacate">
         </div>
-        <div>
+        <div class="form-col-8">
+            <input type="text" id="txtDescription" name="txtDescription" #txtDescription="ngModel" placeholder="E.g.: Cortar el zacate" [(ngModel)]="description" maxlength="250" required />
+            <p class="error" *ngIf="txtDescription.touched && txtDescription.invalid">Descripción es requerida</p>
+        </div>
+        
+    </div>
+    <div class="form-group">
+        <div class="form-col-4">
             <label for="dtpDueDate">Fecha</label>
-            <input type="datetime" id="dtpDueDate" name="dueDate">
         </div>
-
-        <div>
-            <button></button>
+        <div class="form-col-8">
+            <input type="date" id="dtpDueDate" name="dtpDueDate"  [valueAsDate]="date" (change)="updateDate($event)" required [ngClass]="{'invalid':dateInvalid}" (keyup)="checkInvalid()" />
+            <p class="error" *ngIf="dateInvalid">Fecha es requerida</p>
         </div>
-    </form>
-</div>
+        
+    </div>
+    <div class="form-group">
+        <div class="form-col-4">
+            <label for="dtpDueDate">Hora</label>
+        </div>
+        
+        <div class="form-col-8">
+            <div class="time-picker">
+                <select id="slHour" name="slHour" #slHour="ngModel" [(ngModel)]="hour" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <select id="slMinutes" name="slMinutes" #slMinutes="ngModel" [(ngModel)]="minutes" required>
+                    <option value="00">00</option>
+                    <option value="05">05</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                    <option value="35">35</option>
+                    <option value="40">40</option>
+                    <option value="45">45</option>
+                    <option value="50">50</option>
+                    <option value="55">55</option>
+                </select>
+                <select id="slTimeOfDay" name="slTimeOfDay" #slTimeOfDay="ngModel" [(ngModel)]="timeOfDay" required>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+            </div>
+            <p class="error" *ngIf="(slHour.touched && slHour.invalid) || (slMinutes.touched && slMinutes.invalid) || (slTimeOfDay.touched && slTimeOfDay.invalid)">Hora/Minutos es requerido</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="offset-form-col-4 form-col-8 save-container">
+            <button *ngIf="!!currentToDo" (click)="cancel()">
+                Cancel
+                <i class="material-icons-sharp">cancel</i>
+            </button>
+            <button [disabled]="!validForm()" (click)="save()">
+                Submit
+                <i class="material-icons-sharp">save</i>
+            </button>
+        </div>
+    </div>
+</form>
 <div>
     <ul>
         <li *ngFor="let todo of todos ; let _index = index" class="flex-container"  [ngClass]=" isPastDue(todo.dueDate) ? 'past-due-task': 'pending-task'" >
@@ -29,9 +87,12 @@
                 <span>{{todo.description}}</span>
             </div>
             <div class="todo-dueDate">
-                <span>{{todo.dueDate | date: 'medium':'UTC'}} </span>
+                <span>{{getDisplayDate(todo.dueDate) | date: 'medium':'UTC'}} </span>
             </div>
             <div class="todo-delete">
+                <button (click)="editTodo(_index,todo)">
+                    <i class="material-icons-sharp">edit</i>
+                </button>
                 <button (click)="deleteTodo(_index,todo.id)">
                     <i class="material-icons-sharp">delete</i>
                 </button>

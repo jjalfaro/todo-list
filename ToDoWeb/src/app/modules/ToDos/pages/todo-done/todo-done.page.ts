@@ -11,6 +11,7 @@ import { firstValueFrom } from 'rxjs';
 export class ToDoDonePage implements OnInit {
 
   public todos: ToDo[];
+  public messages:string [];
   
   constructor(
     private todosService:TodoService
@@ -41,6 +42,8 @@ export class ToDoDonePage implements OnInit {
     const response = await firstValueFrom(this.todosService.delete(id));
     if(response.isSuccess){
       this.todos.splice(index,1);
+    }else{
+      this.messages = response.messages; 
     }
   }
 

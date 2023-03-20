@@ -22,7 +22,7 @@ export class HttpService {
     })
   }
   public post(url: string, data: CreateUpdateToDoDTO = null): Observable<APIResponse<ToDo>> {
-    return this.httpClient.post<APIResponse<CreateUpdateToDoDTO>>(url, data, {
+    return this.httpClient.post<APIResponse<ToDo>>(url, data, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -30,7 +30,7 @@ export class HttpService {
   }
 
   public put(url: string, data: CreateUpdateToDoDTO = null): Observable<APIResponse<ToDo>> {
-    return this.httpClient.put<APIResponse<CreateUpdateToDoDTO>>(url, data, {
+    return this.httpClient.put<APIResponse<ToDo>>(url, data, {
       headers: {
         'Content-Type': 'application/json'
       }

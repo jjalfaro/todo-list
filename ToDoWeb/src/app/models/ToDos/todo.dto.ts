@@ -1,16 +1,18 @@
-export class CreateUpdateToDoDTO {
-    public id: number;
-    public description: string;
-    public dueDate: Date;
-    public done:boolean
-    
-    constructor(data: any = null) {
-        //Técnica de deep copy para eliminar referencias de memoria
-        data = data ? JSON.parse(JSON.stringify(data)) : {};
+import { ToDo } from "./todo";
+import * as dayjs from "dayjs";
+// Importing dependent plugins
+import utc from "dayjs/plugin/utc";
 
-        this.id = data.id != null ? Number(data.id) : 0;
-        this.description = data.description != null ? data.description : null;
-        this.dueDate = new Date(data.dueDate.toISOString()) ;
-        this.done = data.done != null ? data.done: null;
+export class CreateUpdateToDoDTO {
+    public readonly description: string;
+    public readonly dueDate: string;
+    public readonly done:boolean
+    
+    constructor(data: ToDo) {
+
+
+        this.description = data.description ;
+        this.dueDate = dayjs(data.dueDate).isUTC() ?  data.dueDate.toString() : dayjs(data.dueDate).utc().format();
+        this.done = data.done;
     }
  }
