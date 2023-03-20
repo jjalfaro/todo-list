@@ -1,9 +1,11 @@
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'ToDoDB')
 BEGIN
 	CREATE DATABASE ToDoDB;
+	CREATE DATABASE ToDoDB;
 END
 GO
 
+USE [ToDoDB]
 USE [ToDoDB]
 GO
 
@@ -14,6 +16,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+CREATE TABLE [dbo].[ToDo](
 CREATE TABLE [dbo].[ToDo](
 	[Id] [int] NOT NULL IDENTITY(1,1),
 	[Description] [nvarchar](250) NOT NULL,
