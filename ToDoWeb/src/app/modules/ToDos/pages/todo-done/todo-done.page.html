@@ -1,4 +1,7 @@
-<h1>Done Tasks</h1>
+<h1>Tareas Completadas</h1>
+<div class="spinner-container">
+    <mat-progress-spinner mode="indeterminate" *ngIf="loading === true" class="custom-spinner" diameter="60"></mat-progress-spinner>
+</div>
 <div>
     <ul *ngIf="todos.length > 0">
         <li *ngFor="let todo of todos ; let _index = index" class="flex-container" >
@@ -10,7 +13,7 @@
                 <span>{{todo.description}}</span>
             </div>
             <div class="todo-dueDate">
-                <span>{{todo.dueDate | date: 'medium':'UTC'}} </span>
+                <span>{{getDisplayDate(todo.dueDate) | date: 'medium':'UTC'}} </span>
             </div>
             <div class="todo-delete">
                 <button (click)="deleteTodo(_index,todo.id)">
@@ -19,7 +22,7 @@
             </div>
         </li>
     </ul>
-    <div *ngIf="todos.length == 0" class="no-todos-container"> 
+    <div *ngIf="todos.length == 0 && loading === false" class="no-todos-container"> 
         <div class="no-todos">
             <span>No hay tareas completadas !</span> 
         </div>
