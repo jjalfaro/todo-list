@@ -5,6 +5,9 @@ import { ToDosRoutingModule } from './todos-routing.module';
 import { ToDoPage } from './pages/todos/todos.page';
 import { ToDoDonePage } from './pages/todo-done/todo-done.page';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ToDosRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ]
 })
 export class ToDosModule { }

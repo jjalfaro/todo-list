@@ -5,6 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToDosModule } from './modules/ToDos/todos.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { ToDosModule } from './modules/ToDos/todos.module';
     AppRoutingModule,
     HttpClientModule,
     ToDosModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

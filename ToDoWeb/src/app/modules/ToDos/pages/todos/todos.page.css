@@ -1,5 +1,7 @@
 form {
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .form-group{
@@ -82,9 +84,8 @@ select  {
 
 .save-container > button:hover {
     background: var(--main-hover-background);
- }
+}
 
-  
 input {
     display: block;
     width: 100%;
@@ -95,8 +96,6 @@ label {
     width: 100%;
     max-width: 100%;
 }
-
-
 
 .flex-container {
     display: flex;
@@ -245,4 +244,29 @@ select.ng-touched.ng-invalid{
 .error { 
     margin-top:5px;
     color: #C73E1D;
- }
+}
+
+.no-todos{
+    flex: 1;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    height: 200px;
+    font-size: xx-large;
+    color: var(--top-bar-background);
+    border-top: 1px solid grey;
+    padding-top: 50px;
+}
+
+:host ::ng-deep .custom-spinner circle{   
+    stroke: var(--top-bar-background)
+}
+
+.spinner-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}

@@ -1,4 +1,10 @@
-<h1>Pending Tasks</h1>
+<h1>
+    Tareas Pendientes
+    <span *ngIf="!!currentToDo"> - Editando: {{this.currentToDo.description}}</span>
+</h1>
+<div class="spinner-container">
+    <mat-progress-spinner mode="indeterminate" *ngIf="loading === true" class="custom-spinner" diameter="60"></mat-progress-spinner>
+</div>
 <form #todoForm="ngForm">
     <div class="form-group">
         <div class="form-col-4">
@@ -76,7 +82,7 @@
         </div>
     </div>
 </form>
-<div>
+<div *ngIf="todos.length > 0">
     <ul>
         <li *ngFor="let todo of todos ; let _index = index" class="flex-container"  [ngClass]=" isPastDue(todo.dueDate) ? 'past-due-task': 'pending-task'" >
             <div class="todo-check">
@@ -99,4 +105,7 @@
             </div>
         </li>
     </ul>
+</div>
+<div *ngIf="todos.length == 0 && loading === false" class="no-todos">
+    <span>No hay tareas pendientes !</span> 
 </div>
