@@ -46,12 +46,10 @@ export class ToDoPage implements OnInit {
     this.loading = true;
     const response = await firstValueFrom(this.todosService.list(false));
       if(response.isSuccess) {
-        setTimeout(() => {
-          this.todos = response.data;
-          this.loading = false;
-        }, 3000);
-        
+        this.todos = response.data;
+        this.loading = false;
       }else{
+        this.loading = false;
         this._snackbar.open("Error cargando las tareas","cerrar",{duration: 5000});
         this.showErrorMessages(response.messages)
       }
